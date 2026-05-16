@@ -1,0 +1,20 @@
+{
+  "name": "ryandesigns-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern static portfolio for Ryan Designs, showcasing AI tools, automation projects, and GitHub work.",
+  "scripts": {
+    "test": "node scripts/test.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "keywords": [
+    "portfolio",
+    "github",
+    "ai",
+    "automation",
+    "static-site",
+    "netlify"
+  ],
+  "author": "Ryan Berkeley",
+  "license": "MIT"
+}
