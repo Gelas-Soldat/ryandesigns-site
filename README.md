@@ -1,6 +1,6 @@
-# Ryan Designs Portfolio
+# Ryan Designs Site
 
-A modern static portfolio for Ryan Designs.
+Modern static portfolio for Ryan Designs.
 
 ## Netlify settings
 
@@ -16,12 +16,11 @@ Publish directory:
 dist
 ```
 
-## Local commands
+## Local test
 
 ```bash
-npm install
 npm run test
 npm run build
 ```
 
-This version does not use Vite, React, or any external build dependency. The build command copies the static site into `dist`, which matches Netlify's publish directory.
+This site does not require Vite, React, Tailwind, external build tools, or third party build dependencies. The build script creates `dist` and copies the static site into it.
