@@ -1,0 +1,16 @@
+Emergency flat static deploy.
+
+This version uses no src folder, no scripts folder, no Vite, no React build, and no dist folder.
+
+Required Netlify settings:
+Build command: npm run build
+Publish directory: .
+
+Required repo root files:
+index.html
+netlify.toml
+package.json
+package-lock.json
+
+Important:
+Upload these files directly to the GitHub repo root and commit them. They must overwrite the old files.

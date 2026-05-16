@@ -2,10 +2,10 @@
   "name": "ryandesigns-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Modern static portfolio for Ryan Designs, showcasing AI tools, automation projects, and GitHub work.",
+  "description": "Modern static portfolio for Ryan Designs, showcasing AI tools, automation projects, creator analytics, and GitHub work.",
   "scripts": {
-    "test": "node scripts/test.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node -e \"console.log('No build needed: Netlify publishes the repo root.')\"",
+    "test": "node -e \"const fs=require('fs'); const html=fs.readFileSync('index.html','utf8'); ['HyperLiquid AI Perp Trader','Remote Role Agent','TokSignal Creator Analyzer','Gelas-Soldat'].forEach(t=>{if(!html.includes(t)) throw new Error('Missing '+t)}); console.log('Static portfolio sanity test passed');\""
   },
   "keywords": [
     "portfolio",
