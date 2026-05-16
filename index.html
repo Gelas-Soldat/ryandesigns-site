@@ -6,9 +6,13 @@
     <meta name="theme-color" content="#020617" />
     <meta
       name="description"
-      content="Ryan Designs is a modern portfolio showcasing AI automation tools, crypto research systems, creator analytics, and GitHub projects."
+      content="Ryan builds practical AI tools, automation systems, creator analytics dashboards, and crypto research projects focused on clarity, discipline, and useful results."
     />
-    <title>Ryan Designs | AI Tools, Automation, and GitHub Projects</title>
+    <title>Ryan Designs | AI Automation Builder and Creator Tools</title>
+    <meta property="og:title" content="Ryan Designs | AI Automation Builder and Creator Tools" />
+    <meta property="og:description" content="Practical AI tools, automation systems, creator dashboards, and crypto research projects built around clarity, discipline, and usefulness." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryandesigns.dev/" />
     <style>
       :root {
         color-scheme: dark;
@@ -648,6 +652,117 @@
         background: linear-gradient(135deg, rgba(34, 211, 238, 0.16), rgba(255, 255, 255, 0.045), rgba(217, 70, 239, 0.12));
       }
 
+
+
+      .values-strip {
+        padding: 28px 0 0;
+      }
+
+      .values-panel {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.045);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .value-pill {
+        display: grid;
+        place-items: center;
+        min-height: 58px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 20px;
+        background: rgba(2, 6, 23, 0.38);
+        color: #e0f2fe;
+        font-size: 13px;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .bio-section {
+        padding-top: 64px;
+      }
+
+      .bio-panel {
+        display: grid;
+        grid-template-columns: 1fr 0.72fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .bio-copy,
+      .bio-side {
+        border: 1px solid var(--line);
+        border-radius: 34px;
+        background: var(--panel-soft);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .bio-copy {
+        padding: 36px;
+      }
+
+      .bio-copy h2 {
+        margin-bottom: 22px;
+      }
+
+      .bio-copy p {
+        color: #cbd5e1;
+        font-size: 17px;
+        line-height: 1.78;
+      }
+
+      .bio-copy p + p {
+        margin-top: 18px;
+      }
+
+      .bio-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+
+      .bio-quote {
+        padding: 32px;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(217, 70, 239, 0.08));
+      }
+
+      .bio-quote strong {
+        display: block;
+        font-size: clamp(30px, 4vw, 46px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .bio-quote span {
+        display: block;
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .bio-list {
+        display: grid;
+        gap: 10px;
+        padding: 24px;
+      }
+
+      .bio-list div {
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 18px;
+        padding: 15px;
+        background: rgba(2, 6, 23, 0.36);
+        color: #dbeafe;
+        font-weight: 850;
+      }
+
       footer {
         border-top: 1px solid var(--line);
         padding: 28px 0;
@@ -679,7 +794,8 @@
       @media (max-width: 960px) {
         .hero-grid,
         .stack-grid,
-        .contact-panel {
+        .contact-panel,
+        .bio-panel {
           grid-template-columns: 1fr;
         }
 
@@ -688,7 +804,8 @@
           grid-template-columns: repeat(2, 1fr);
         }
 
-        .stats {
+        .stats,
+        .values-panel {
           grid-template-columns: repeat(2, 1fr);
         }
       }
@@ -716,6 +833,14 @@
           grid-template-columns: 1fr;
         }
 
+        .values-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .bio-copy {
+          padding: 26px;
+        }
+
         .footer-inner,
         .actions,
         .project-tools {
@@ -740,6 +865,7 @@
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#work">Work</a>
+          <a href="#bio">Bio</a>
           <a href="#projects">Projects</a>
           <a href="#stack">Stack</a>
           <a href="#contact">Contact</a>
@@ -749,6 +875,7 @@
       </div>
       <div class="container mobile-menu" id="mobileMenu">
         <a href="#work">Work</a>
+        <a href="#bio">Bio</a>
         <a href="#projects">Projects</a>
         <a href="#stack">Stack</a>
         <a href="#contact">Contact</a>
@@ -759,20 +886,21 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="fade-in">
-            <div class="eyebrow">⚡ AI automation, crypto tools, and creator analytics</div>
-            <h1>I build sharp tools for people who want signal, not noise.</h1>
+            <div class="eyebrow">⚡ AI automation, creator tools, and crypto research</div>
+            <h1>I build practical tools for people who value clarity, discipline, and execution.</h1>
             <p class="hero-text">
-              I am Ryan. I design and ship practical AI assisted systems, trading research tools, job search dashboards, and creator analytics products with clean interfaces and real world utility.
+              I am Ryan. I build AI assisted systems, automation workflows, crypto research tools, job search dashboards, and creator analytics products with clean interfaces and real world utility.
             </p>
             <div class="actions">
-              <a class="btn primary" href="#projects">View Projects ↗</a>
+              <a class="btn primary" href="#projects">View My Builds ↗</a>
+              <a class="btn" href="#bio">Read Bio</a>
               <a class="btn" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">Open GitHub</a>
             </div>
             <div class="stats">
-              <div class="stat"><strong>3+</strong><span>Public Projects</span></div>
-              <div class="stat"><strong>Python</strong><span>Main Stack</span></div>
+              <div class="stat"><strong>3+</strong><span>Public Builds</span></div>
+              <div class="stat"><strong>Builder</strong><span>Identity</span></div>
               <div class="stat"><strong>AI Tools</strong><span>Focus</span></div>
-              <div class="stat"><strong>Lean</strong><span>Build Style</span></div>
+              <div class="stat"><strong>Practical</strong><span>Build Style</span></div>
             </div>
           </div>
 
@@ -785,14 +913,48 @@
             </div>
             <div class="terminal-body">
               <p class="muted">$ whoami</p>
-              <p class="cyan">Ryan Berkeley</p>
+              <p class="cyan">Ryan</p>
               <p class="muted" style="margin-top: 18px;">$ current_focus</p>
               <p>AI assisted tools, automation dashboards, crypto research systems</p>
               <p class="muted" style="margin-top: 18px;">$ portfolio_mode</p>
               <p class="green-text">interactive, modern, project driven</p>
               <p style="margin-top: 24px; padding: 16px; border: 1px solid rgba(103,232,249,.22); border-radius: 18px; background: rgba(103,232,249,.08);">
-                Simple frontends. Useful automations. Real guardrails. Strong presentation.
+                Order over noise. Discipline over hype. Tools that make the next move clearer.
               </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="values-strip" aria-label="Core values">
+        <div class="container values-panel">
+          <span class="value-pill">Family</span>
+          <span class="value-pill">Discipline</span>
+          <span class="value-pill">Curiosity</span>
+          <span class="value-pill">Service</span>
+          <span class="value-pill">Execution</span>
+        </div>
+      </section>
+
+      <section id="bio" class="bio-section">
+        <div class="container bio-panel">
+          <article class="bio-copy">
+            <p class="label">About Ryan</p>
+            <h2>Husband. Father. Builder.</h2>
+            <p>I believe a man should build things that matter, protect what he loves, keep learning, and use his skills to help others. That mindset drives the way I approach technology. I build AI tools, automation systems, and dashboards that bring order to chaos and help people move with more clarity and confidence.</p>
+            <p>My work is practical by design. Crypto research tools, job search agents, creator analytics, automation workflows, and technical experiments all come from the same place: solve the problem, sharpen the system, and make the next move better.</p>
+            <p>I love my wife, I love my kids, and I want the work I create to reflect discipline, service, and purpose.</p>
+          </article>
+          <aside class="bio-side" aria-label="Personal mission">
+            <div class="bio-quote">
+              <strong>Build what matters.</strong>
+              <span>Technology should make people stronger, sharper, and more capable.</span>
+            </div>
+            <div class="bio-list">
+              <div>Family first mindset</div>
+              <div>Practical tools over empty hype</div>
+              <div>Learning hard things and helping people</div>
+              <div>Cleaner systems, clearer decisions</div>
             </div>
           </aside>
         </div>
@@ -802,9 +964,9 @@
         <div class="container">
           <div class="section-head">
             <p class="label">What I build</p>
-            <h2>Practical systems with a clean command center feel.</h2>
+            <h2>Practical systems built with discipline and purpose.</h2>
             <p class="section-copy">
-              This is not a basic bio link page. It is a technical portfolio with personality, product thinking, and a clear path to the strongest work.
+              This is not a basic bio link page. It is a technical portfolio for practical builds, useful systems, and projects that solve real problems.
             </p>
           </div>
           <div class="specialty-grid">
@@ -859,8 +1021,8 @@
         <div class="container contact-panel">
           <div>
             <p class="label">Contact</p>
-            <h2>Let the site sell the builder behind the tools.</h2>
-            <p class="section-copy">GitHub for proof, LinkedIn for career context, and support links for people who like the work.</p>
+            <h2>Connect with the builder behind the tools.</h2>
+            <p class="section-copy">GitHub for proof, project links for context, and support links for people who like the work.</p>
           </div>
           <div class="actions" style="margin-top:0;">
             <a class="btn primary" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">GitHub</a>
@@ -873,7 +1035,7 @@
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Ryan Designs. Built with intent.</span>
-        <span>Static Netlify build. No framework required.</span>
+        <span>Built for clarity, discipline, and useful execution.</span>
       </div>
     </footer>
 

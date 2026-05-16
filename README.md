@@ -1,6 +1,8 @@
-# Ryan Designs Site
+# Ryan Designs
 
-Modern static portfolio for Ryan Designs.
+A modern static portfolio for Ryan Designs.
+
+The site showcases practical AI tools, automation projects, creator analytics, crypto research work, and a stronger personal bio section.
 
 ## Netlify settings
 
@@ -16,11 +18,11 @@ Publish directory:
 dist
 ```
 
+Base directory should stay blank.
+
 ## Local test
 
 ```bash
 npm run test
 npm run build
 ```
-
-This site does not require Vite, React, Tailwind, external build tools, or third party build dependencies. The build script creates `dist` and copies the static site into it.

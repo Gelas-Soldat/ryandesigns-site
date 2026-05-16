@@ -2,9 +2,9 @@
   "name": "ryandesigns-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Modern static portfolio for Ryan Designs, showcasing AI tools, automation projects, creator analytics, and GitHub work.",
+  "description": "Modern static portfolio for Ryan Designs, showcasing practical AI tools, automation projects, creator analytics, and GitHub work.",
   "scripts": {
-    "test": "node -e \"const fs=require('fs'); const html=fs.readFileSync('index.html','utf8'); const checks=['HyperLiquid AI Perp Trader','Remote Role Agent','TokSignal Creator Analyzer','projectSearch']; for (const item of checks) { if (!html.includes(item)) { throw new Error('Missing expected content: '+item); } } console.log('Static portfolio tests passed');\"",
+    "test": "node -e \"const fs=require('fs'); const html=fs.readFileSync('index.html','utf8'); const checks=['Husband. Father. Builder.','Build what matters.','HyperLiquid AI Perp Trader','Remote Role Agent','TokSignal Creator Analyzer','projectSearch']; for (const item of checks) { if (!html.includes(item)) { throw new Error('Missing expected content: '+item); } } const forbidden='Berk'+'eley'; if (html.includes(forbidden)) { throw new Error('Unexpected last name found in page content'); } console.log('Static portfolio tests passed');\"",
     "build": "node -e \"const fs=require('fs'); const path=require('path'); fs.rmSync('dist',{recursive:true,force:true}); fs.mkdirSync('dist',{recursive:true}); fs.copyFileSync('index.html',path.join('dist','index.html')); if (fs.existsSync('_redirects')) fs.copyFileSync('_redirects',path.join('dist','_redirects')); console.log('Static site built successfully into dist');\""
   },
   "keywords": [
@@ -14,6 +14,6 @@
     "github-projects",
     "ai-tools"
   ],
-  "author": "Ryan Berkeley",
+  "author": "Ryan",
   "license": "MIT"
 }
