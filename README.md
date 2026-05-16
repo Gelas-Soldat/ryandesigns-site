@@ -26,3 +26,12 @@ Base directory should stay blank.
 npm run test
 npm run build
 ```
+
+
+## Support
+
+Support link: https://ko-fi.com/gelassoldat
+
+## Favicon
+
+Includes a tech styled SVG favicon at `favicon.svg`.
