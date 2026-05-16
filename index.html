@@ -765,6 +765,82 @@
         font-weight: 850;
       }
 
+
+      .email-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(2, 6, 23, 0.72);
+        backdrop-filter: blur(14px);
+      }
+
+      .email-modal.open {
+        display: flex;
+      }
+
+      .email-card {
+        width: min(520px, 100%);
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.96));
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+        padding: 26px;
+      }
+
+      .email-card h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        line-height: 1.05;
+      }
+
+      .email-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 14px 0 0;
+      }
+
+      .email-display {
+        margin-top: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #dff7ff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        padding: 14px 16px;
+        overflow-wrap: anywhere;
+      }
+
+      .email-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .email-status {
+        min-height: 22px;
+        margin-top: 14px;
+        color: var(--cyan);
+        font-size: 0.95rem;
+      }
+
+      .email-close {
+        float: right;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        border-radius: 999px;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
       footer {
         border-top: 1px solid var(--line);
         padding: 28px 0;
@@ -1049,6 +1125,20 @@
       </div>
     </footer>
 
+    <div class="email-modal" id="emailModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle">
+      <div class="email-card">
+        <button class="email-close" id="closeEmailModal" type="button" aria-label="Close email options">×</button>
+        <h3 id="emailModalTitle">Email Ryan</h3>
+        <p>This keeps the address out of the page source, then reveals it only after you choose to contact me.</p>
+        <div class="email-display" id="emailPreview" aria-live="polite"></div>
+        <div class="email-actions">
+          <button class="btn primary" id="copyEmailBtn" type="button">Copy Email</button>
+          <button class="btn" id="openMailBtn" type="button">Open Email App</button>
+        </div>
+        <div class="email-status" id="emailStatus" aria-live="polite"></div>
+      </div>
+    </div>
+
     <script>
       const GITHUB_USER = "Gelas-Soldat";
 
@@ -1206,15 +1296,76 @@
         renderProjects();
       });
 
+      const decodeEmailPart = codes => codes.map(code => String.fromCharCode(code)).join("");
+      const buildEmailAddress = () => {
+        const local = decodeEmailPart([104, 101, 108, 108, 111]);
+        const domain = decodeEmailPart([114, 121, 97, 110, 100, 101, 115, 105, 103, 110, 115, 46, 100, 101, 118]);
+        return `${local}@${domain}`;
+      };
+
       const emailButton = document.getElementById("emailBtn");
-      if (emailButton) {
-        emailButton.addEventListener("click", () => {
-          const decode = codes => codes.map(code => String.fromCharCode(code)).join("");
-          const local = decode([104, 101, 108, 108, 111]);
-          const domain = decode([114, 121, 97, 110, 100, 101, 115, 105, 103, 110, 115, 46, 100, 101, 118]);
-          const address = `${local}@${domain}`;
-          const subject = encodeURIComponent("Ryan Designs inquiry");
-          window.location.href = `mailto:${address}?subject=${subject}`;
+      const emailModal = document.getElementById("emailModal");
+      const emailPreview = document.getElementById("emailPreview");
+      const emailStatus = document.getElementById("emailStatus");
+      const closeEmailModal = document.getElementById("closeEmailModal");
+      const copyEmailBtn = document.getElementById("copyEmailBtn");
+      const openMailBtn = document.getElementById("openMailBtn");
+
+      const showEmailModal = () => {
+        const address = buildEmailAddress();
+        emailPreview.textContent = address;
+        emailStatus.textContent = "Choose copy if your browser does not have an email app connected.";
+        emailModal.classList.add("open");
+        emailModal.setAttribute("aria-hidden", "false");
+        copyEmailBtn.focus();
+      };
+
+      const hideEmailModal = () => {
+        emailModal.classList.remove("open");
+        emailModal.setAttribute("aria-hidden", "true");
+        emailStatus.textContent = "";
+        emailButton.focus();
+      };
+
+      const copyEmail = async () => {
+        const address = buildEmailAddress();
+        try {
+          await navigator.clipboard.writeText(address);
+          emailStatus.textContent = "Email copied. Paste it into your email app.";
+        } catch (error) {
+          const fallback = document.createElement("textarea");
+          fallback.value = address;
+          fallback.setAttribute("readonly", "");
+          fallback.style.position = "fixed";
+          fallback.style.left = "-9999px";
+          document.body.appendChild(fallback);
+          fallback.select();
+          document.execCommand("copy");
+          fallback.remove();
+          emailStatus.textContent = "Email copied. Paste it into your email app.";
+        }
+      };
+
+      const openEmailApp = () => {
+        const address = buildEmailAddress();
+        const subject = encodeURIComponent("Ryan Designs inquiry");
+        const body = encodeURIComponent("Hi Ryan,\n\n");
+        window.location.href = `mailto:${address}?subject=${subject}&body=${body}`;
+        window.setTimeout(() => {
+          emailStatus.textContent = "If nothing opened, your browser has no mail app connected. Use Copy Email instead.";
+        }, 900);
+      };
+
+      if (emailButton && emailModal) {
+        emailButton.addEventListener("click", showEmailModal);
+        closeEmailModal.addEventListener("click", hideEmailModal);
+        copyEmailBtn.addEventListener("click", copyEmail);
+        openMailBtn.addEventListener("click", openEmailApp);
+        emailModal.addEventListener("click", event => {
+          if (event.target === emailModal) hideEmailModal();
+        });
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && emailModal.classList.contains("open")) hideEmailModal();
         });
       }
 
