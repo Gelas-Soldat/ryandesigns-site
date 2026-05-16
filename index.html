@@ -897,7 +897,8 @@
               <a class="btn primary" href="#projects">View My Builds ↗</a>
               <a class="btn" href="#bio">Read Bio</a>
               <a class="btn" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">Open GitHub</a>
-              <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">Support Work</a>
+              <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">Ko-fi</a>
+              <a class="btn" href="https://buymeacoffee.com/ryancreates" target="_blank" rel="noreferrer">Buy Me a Coffee</a>
             </div>
             <div class="stats">
               <div class="stat"><strong>3+</strong><span>Public Builds</span></div>
@@ -1029,11 +1030,13 @@
           <div>
             <p class="label">Contact</p>
             <h2>Connect with the builder behind the tools.</h2>
-            <p class="section-copy">GitHub for proof, project links for context, and support links for people who like the work.</p>
+            <p class="section-copy">GitHub for proof, project links for context, support links for people who like the work, and a protected email button for direct contact.</p>
           </div>
           <div class="actions" style="margin-top:0;">
             <a class="btn primary" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">Support on Ko-fi</a>
+            <button class="btn" id="emailBtn" type="button" aria-label="Email Ryan">Email Me</button>
+            <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">Ko-fi</a>
+            <a class="btn" href="https://buymeacoffee.com/ryancreates" target="_blank" rel="noreferrer">Buy Me a Coffee</a>
           </div>
         </div>
       </section>
@@ -1203,18 +1206,22 @@
         renderProjects();
       });
 
+      const emailButton = document.getElementById("emailBtn");
+      if (emailButton) {
+        emailButton.addEventListener("click", () => {
+          const decode = codes => codes.map(code => String.fromCharCode(code)).join("");
+          const local = decode([104, 101, 108, 108, 111]);
+          const domain = decode([114, 121, 97, 110, 100, 101, 115, 105, 103, 110, 115, 46, 100, 101, 118]);
+          const address = `${local}@${domain}`;
+          const subject = encodeURIComponent("Ryan Designs inquiry");
+          window.location.href = `mailto:${address}?subject=${subject}`;
+        });
+      }
+
       runBrowserTests();
       renderFilters();
       renderProjects();
       loadGitHubStats();
-    </script>
-
-    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-    <script type='text/javascript'>
-      if (window.kofiwidget2) {
-        kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'L4L11ZOTLK');
-        kofiwidget2.draw();
-      }
     </script>
   </body>
 </html>
