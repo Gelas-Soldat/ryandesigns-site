@@ -498,6 +498,14 @@
       .creator {
         background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(217, 70, 239, 0.08), rgba(168, 85, 247, 0.18));
       }
+      .data {
+  background: linear-gradient(
+    135deg,
+    rgba(250,204,21,.18),
+    rgba(34,197,94,.09),
+    rgba(59,130,246,.16)
+  );
+}
 
       .badge {
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1143,44 +1151,56 @@
       const GITHUB_USER = "Gelas-Soldat";
 
       const projects = [
-        {
-          id: "hyperliquid-ai-perp-trader",
-          name: "HyperLiquid AI Perp Trader",
-          repo: "hyperliquid-ai-perp-trader",
-          category: "Crypto",
-          status: "Active paper testing",
-          visual: "crypto",
-          stack: ["Python", "HyperLiquid", "Trading", "Telegram", "Risk Controls"],
-          summary: "AI assisted perpetual futures scanner and trade management suite with dynamic exits, sentiment checks, adaptive risk rules, and paper/live modes.",
-          impact: "Turns messy market signals into structured trade decisions with safety gates before execution.",
-          github: "https://github.com/Gelas-Soldat/hyperliquid-ai-perp-trader"
-        },
-        {
-          id: "remote-role-agent",
-          name: "Remote Role Agent",
-          repo: "remote_role_agent",
-          category: "Automation",
-          status: "V3.1 local dashboard",
-          visual: "automation",
-          stack: ["Python", "Flask", "SQLite", "Job APIs", "AI Review"],
-          summary: "Local AI assisted command center for finding, filtering, scoring, saving, and exporting remote U.S. job opportunities.",
-          impact: "Cuts job hunting noise by ranking roles against a real target profile and keeping the workflow organized.",
-          github: "https://github.com/Gelas-Soldat/remote_role_agent"
-        },
-        {
-          id: "toksignal-creator-analyzer",
-          name: "TokSignal Creator Analyzer",
-          repo: "toksignal-creator-analyzer",
-          category: "Creator Tools",
-          status: "MVP active improvement",
-          visual: "creator",
-          stack: ["Static Site", "CSV", "Charts", "Netlify", "Privacy First"],
-          summary: "Mobile friendly TikTok analytics dashboard with CSV upload, paste import, creator scoring, content insights, and next video ideas.",
-          impact: "Gives creators a private browser based way to understand what is working without needing a backend.",
-          github: "https://github.com/Gelas-Soldat/toksignal-creator-analyzer",
-          demo: "https://toksignal.netlify.app/"
-        }
-      ];
+  {
+    id: "hyperliquid-ai-perp-trader",
+    name: "HyperLiquid AI Perp Trader",
+    repo: "hyperliquid-ai-perp-trader",
+    category: "Crypto",
+    status: "Active paper testing",
+    visual: "crypto",
+    stack: ["Python", "HyperLiquid", "Trading", "Telegram", "Risk Controls"],
+    summary: "AI assisted perpetual futures scanner and trade management suite with dynamic exits, sentiment checks, adaptive risk rules, and paper/live modes.",
+    impact: "Turns messy market signals into structured trade decisions with safety gates before execution.",
+    github: "https://github.com/Gelas-Soldat/hyperliquid-ai-perp-trader"
+  },
+  {
+    id: "remote-role-agent",
+    name: "Remote Role Agent",
+    repo: "remote_role_agent",
+    category: "Automation",
+    status: "V3.1 local dashboard",
+    visual: "automation",
+    stack: ["Python", "Flask", "SQLite", "Job APIs", "AI Review"],
+    summary: "Local AI assisted command center for finding, filtering, scoring, saving, and exporting remote U.S. job opportunities.",
+    impact: "Cuts job hunting noise by ranking roles against a real target profile and keeping the workflow organized.",
+    github: "https://github.com/Gelas-Soldat/remote_role_agent"
+  },
+  {
+    id: "toksignal-creator-analyzer",
+    name: "TokSignal Creator Analyzer",
+    repo: "toksignal-creator-analyzer",
+    category: "Creator Tools",
+    status: "MVP active improvement",
+    visual: "creator",
+    stack: ["Static Site", "CSV", "Charts", "Netlify", "Privacy First"],
+    summary: "Mobile friendly TikTok analytics dashboard with CSV upload, paste import, creator scoring, content insights, and next video ideas.",
+    impact: "Gives creators a private browser based way to understand what is working without needing a backend.",
+    github: "https://github.com/Gelas-Soldat/toksignal-creator-analyzer",
+    demo: "https://toksignal.netlify.app/"
+  },
+  {
+    id: "community-health-intelligence",
+    name: "Community Health Intelligence",
+    repo: "community-health-intelligence",
+    category: "Data",
+    status: "Active SQL portfolio project",
+    visual: "data",
+    stack: ["SQL", "Data Analysis", "Python", "Portfolio", "Public Health Data"],
+    summary: "A SQL portfolio project focused on turning raw public health style data into clean, structured insights through database design, queries, analysis, and reporting.",
+    impact: "Built to sharpen my technical foundation in SQL, data cleaning, analysis logic, and practical storytelling through data.",
+    github: "https://github.com/Gelas-Soldat/community-health-intelligence"
+  }
+];
 
       const state = {
         category: "All",
@@ -1270,10 +1290,11 @@
       }
 
       function runBrowserTests() {
-        console.assert(filterProjects(projects, "All", "").length === 3, "Expected all projects");
+        console.assert(filterProjects(projects, "All", "").length === 4, "Expected all projects");
         console.assert(filterProjects(projects, "Crypto", "")[0].id === "hyperliquid-ai-perp-trader", "Expected crypto project");
         console.assert(filterProjects(projects, "All", "sqlite")[0].id === "remote-role-agent", "Expected sqlite search result");
         console.assert(filterProjects(projects, "All", "not-real").length === 0, "Expected no fake project result");
+        console.assert(filterProjects(projects,"Data","")[0].id==="community-health-intelligence","Expected data project");
       }
 
       document.getElementById("year").textContent = new Date().getFullYear();
