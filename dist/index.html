@@ -384,8 +384,6 @@
         @supports (animation-timeline: view()) { .reveal { animation: none; } }
       }
 
-      /* Skip rendering below-fold sections until needed */
-      #work, #projects, #stack, #contact { content-visibility: auto; contain-intrinsic-size: auto 720px; }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .reveal { opacity: 1; transform: none; transition: none; }
@@ -810,10 +808,12 @@
 
       /* ---- DETAIL MODAL ---- */
       const readmeCache={};
+      let detailOpener=null;
 
       async function openDetail(id){
         const project=projects.find(p=>p.id===id);
         if(!project)return;
+        detailOpener=document.activeElement;
         const modal=document.getElementById("detailModal");
         const repo=state.repoData[project.repo]||{};
         const updated=timeAgo(repo.pushed_at);
@@ -870,6 +870,8 @@
         modal.classList.remove("open");
         modal.setAttribute("aria-hidden","true");
         document.body.style.overflow="";
+        if(detailOpener&&detailOpener.focus){detailOpener.focus({preventScroll:true});}
+        detailOpener=null;
       }
       document.getElementById("detailClose").addEventListener("click",closeDetail);
       document.getElementById("detailModal").addEventListener("click",e=>{
@@ -919,6 +921,14 @@
         btn.setAttribute("aria-expanded",String(open));
         btn.textContent=open?"×":"☰";
       });
+      // Close the mobile menu when a navigation link is tapped
+      document.querySelectorAll("#mobileMenu a").forEach(a=>a.addEventListener("click",()=>{
+        const menu=document.getElementById("mobileMenu");
+        const btn=document.getElementById("menuBtn");
+        menu.classList.remove("open");
+        btn.setAttribute("aria-expanded","false");
+        btn.textContent="☰";
+      }));
 
       /* ---- TABS / SEARCH ---- */
       document.getElementById("tabList").addEventListener("click",e=>{
@@ -943,7 +953,9 @@
       const buildEmail=()=>`${dec([104,101,108,108,111])}@${dec([114,121,97,110,100,101,115,105,103,110,115,46,100,101,118])}`;
       const emailBtn=document.getElementById("emailBtn");
       const emailModal=document.getElementById("emailModal");
+      let emailModalOpener=null;
       const showEmailModal=()=>{
+        emailModalOpener=document.activeElement;
         document.getElementById("emailPreview").textContent=buildEmail();
         document.getElementById("emailStatus").textContent="Choose copy if your browser does not have an email app connected.";
         emailModal.classList.add("open");emailModal.setAttribute("aria-hidden","false");
@@ -951,7 +963,10 @@
       };
       const hideEmailModal=()=>{
         emailModal.classList.remove("open");emailModal.setAttribute("aria-hidden","true");
-        document.getElementById("emailStatus").textContent="";emailBtn.focus();
+        document.getElementById("emailStatus").textContent="";
+        // Return focus to whichever button opened the modal — without scrolling the page to it
+        if(emailModalOpener&&emailModalOpener.focus){emailModalOpener.focus({preventScroll:true});}
+        emailModalOpener=null;
       };
       emailBtn.addEventListener("click",showEmailModal);
       // Hero button: open the email modal — a bare mailto fails silently when no mail app is configured
