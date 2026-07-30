@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = t;
+        }catch(e){ document.documentElement.dataset.theme = "light"; }
+      })();
+    </script>
+    <script async src="https://plausible.io/js/pa-2cPxiazowfSd8Jx0SMuCF.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <meta name="description" content="Case study: a county-level public health intelligence platform built on CDC, Census, and USDA datasets with SQL analytics, KPI modeling, and an interactive dashboard. Live at uscounty.health." />
+    <title>Community Health Intelligence — Case Study | Ryan Designs</title>
+    <meta property="og:title" content="Community Health Intelligence — Case Study" />
+    <meta property="og:description" content="County-level public health intelligence from CDC, Census, and USDA data — SQL analytics, KPI modeling, and the hard decisions behind it." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://ryandesigns.dev/projects/community-health-intelligence.html" />
+    <meta property="og:image" content="https://ryandesigns.dev/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="../index.html" aria-label="Ryan Designs home">ryandesigns<span class="tld">.dev</span></a>
+        <a class="back-link mono" href="../index.html#projects">← all projects</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article>
+        <header class="case-head">
+          <p class="label">case study / data</p>
+          <h1>Community Health Intelligence</h1>
+          <p class="case-sub">County-level public health intelligence built on CDC, Census, and USDA public datasets — SQL analytics, KPI modeling, and an interactive dashboard that surfaces high-risk U.S. counties.</p>
+          <div class="meta-row mono">
+            <span class="pill">SQL</span><span class="pill">PostgreSQL / Neon</span><span class="pill">Python ETL</span><span class="pill">Netlify</span><span class="pill live">● live</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://uscounty.health" target="_blank" rel="noreferrer">visit uscounty.health ↗</a>
+            <a class="btn" href="https://github.com/Gelas-Soldat/community-health-intelligence" target="_blank" rel="noreferrer">view repo ↗</a>
+          </div>
+        </header>
+
+        <section>
+          <h2>The problem</h2>
+          <p>Public health risk in the U.S. is profoundly local — two neighboring counties can have wildly different health outcomes — but the data that explains why is scattered across three federal agencies that don't publish on the same schedule, at the same granularity, or with the same identifiers. CDC PLACES has the health measures, the Census has the population and income context, and the USDA has food access. Nothing joins them for you.</p>
+          <p>This project builds that join: an ETL pipeline that cleans and loads all three sources into PostgreSQL, a SQL layer that models county-level risk KPIs, and a dashboard that makes the result explorable by anyone — live at <a href="https://uscounty.health" target="_blank" rel="noreferrer">uscounty.health</a>.</p>
+        </section>
+
+        <figure>
+          <img src="img/chi-dashboard.png" alt="Community Health Intelligence dashboard showing county-level KPI cards and risk charts" loading="lazy" />
+          <figcaption class="mono">The dashboard: county risk scoring built from CDC, Census, and USDA joins.</figcaption>
+        </figure>
+
+        <section>
+          <h2>One hard decision</h2>
+          <p>I went with county-level granularity instead of state-level, which meant dealing with the fact that CDC suppresses small-county data for privacy. Rolling those counties up into their state average would have been cleaner, and it also would have quietly erased the rural counties that are the whole reason this project is interesting. So I kept them as explicit gaps in the UI rather than filling them with a number that looks real.</p>
+        </section>
+
+        <section>
+          <h2>What I'd do differently</h2>
+          <p>I'd have checked data vintage alignment across CDC, Census, and USDA before designing the schema. They don't publish on the same cycle, and I ended up reworking the model once I realized I was joining a 2022 health measure to a 2020 population denominator.</p>
+        </section>
+
+        <section>
+          <h2>Under the hood</h2>
+          <ul>
+            <li>Python ETL scripts per source: CDC PLACES, Census ACS, and USDA Food Access, each cleaned and conformed to county FIPS codes</li>
+            <li>PostgreSQL (Neon) schema with views, stored procedures, and indexes tuned for the dashboard's query patterns</li>
+            <li>A SQL portfolio layered from beginner to advanced queries, including performance tuning, kept in the repo as a learning record</li>
+            <li>React dashboard deployed on Netlify, reading the modeled KPIs</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="case-cta">
+        <div>
+          <h2>AI quality &amp; human-data operations — open to work</h2>
+          <p>This is one of the projects I use to sharpen the data skills behind my annotation and quality work. Questions about it — or about what I could do for your team?</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="../resume.pdf" target="_blank" rel="noreferrer">résumé (pdf) ↓</a>
+          <button class="btn" id="ctaEmailBtn" type="button">email me</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> ryandesigns.dev — built with intent.</span>
+        <span><a href="../index.html">home</a> · <a href="../index.html#projects">projects</a></span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent=new Date().getFullYear();
+      const dec=c=>c.map(x=>String.fromCharCode(x)).join("");
+      document.getElementById("ctaEmailBtn").addEventListener("click",()=>{
+        window.location.href=`mailto:${dec([104,101,108,108,111])}@${dec([114,121,97,110,100,101,115,105,103,110,115,46,100,101,118])}?subject=${encodeURIComponent("Ryan Designs inquiry")}`;
+      });
+    </script>
+  </body>
+</html>

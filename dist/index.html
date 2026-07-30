@@ -43,8 +43,8 @@
       "@type": "Person",
       "name": "Ryan",
       "url": "https://ryandesigns.dev/",
-      "jobTitle": "AI Automation Builder",
-      "description": "Builds practical AI tools, automation systems, creator analytics dashboards, and crypto research projects.",
+      "jobTitle": "AI Quality and Human-Data Operations",
+      "description": "AI quality and human-data operations professional — rubrics, calibration protocols, and annotation lifecycle for production AI models. Builds AI-assisted analytics tools and dashboards.",
       "sameAs": ["https://github.com/Gelas-Soldat"],
       "knowsAbout": ["Python", "SQL", "JavaScript", "AI Automation", "Data Analysis"]
     }
@@ -359,6 +359,9 @@
       .tab-fade { animation: tabFade .2s ease both; }
       @keyframes tabFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
+      /* Cross-document view transitions between home and case-study pages */
+      @view-transition { navigation: auto; }
+
       /* SCROLL REVEAL */
       .reveal {
         opacity: 0; transform: translateY(22px);
@@ -442,14 +445,14 @@
       <section class="hero" style="border-top:none;">
         <div class="container hero-grid">
           <div class="fade-in">
-            <div class="hero-status mono">Currently building · AI tools & automation</div>
-            <h1>I build practical tools for people who value <em>clarity, discipline, and execution.</em></h1>
-            <p class="hero-text">I'm Ryan. I build <strong>AI assisted systems</strong>, automation workflows, crypto research tools, job search dashboards, and creator analytics products — while actively upskilling in <strong>Python, SQL, and JavaScript</strong>.</p>
+            <div class="hero-status mono">Open to work · AI quality &amp; human-data operations · Remote, US</div>
+            <h1>I run annotation quality and human-data operations for <em>production AI models.</em></h1>
+            <p class="hero-text">Rubrics, calibration protocols, QA scoring, and human-in-the-loop workflows — backed by 13 years at <strong>American Express</strong>, and sharpened by building my own AI-assisted tools in <strong>Python, SQL, and JavaScript</strong>.</p>
+            <p class="hero-text" style="margin-top:10px;font-style:italic;font-size:15px;">Also considering customer experience and support operations. Open to relocation.</p>
             <div class="actions">
-              <a class="btn primary" href="#projects">view builds →</a>
-              <a class="btn" href="#bio">read bio</a>
-              <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">ko-fi</a>
-              <a class="btn" href="https://buymeacoffee.com/ryancreates" target="_blank" rel="noreferrer">buy me a coffee</a>
+              <a class="btn primary" href="/resume.pdf" target="_blank" rel="noreferrer">résumé (pdf) ↓</a>
+              <button class="btn" id="heroEmailBtn" type="button">email me</button>
+              <a class="btn" href="#projects">view builds →</a>
             </div>
           </div>
           <aside class="terminal fade-in" aria-label="Terminal style summary">
@@ -459,22 +462,16 @@
             </div>
             <div class="terminal-body">
               <div><span class="prompt">$</span> whoami</div>
-              <div class="accent">ryan — builder</div>
-              <div style="margin-top:14px;"><span class="prompt">$</span> current_focus</div>
-              <div class="out">AI tools · automation · crypto research · creator analytics</div>
-              <div style="margin-top:14px;"><span class="prompt">$</span> builds --count</div>
-              <div class="out"><span id="repoCount" class="accent">8</span> tracked · 6 public on GitHub</div>
-              <div class="terminal-note">Order over noise. Discipline over hype. Tools that make the next move clearer.</div>
+              <div class="accent">ryan — ai quality &amp; human-data ops</div>
+              <div style="margin-top:14px;"><span class="prompt">$</span> experience</div>
+              <div class="out">13 yrs American Express · 6 in AI model operations</div>
+              <div style="margin-top:14px;"><span class="prompt">$</span> models_supported</div>
+              <div class="out">US Chatbot · UK Chatbot · Document AI</div>
+              <div class="terminal-note">Rubrics, calibration protocols, and sampling plans that held QA scores above 90%.</div>
             </div>
           </aside>
         </div>
       </section>
-
-      <div class="values-strip" aria-label="Core values">
-        <div class="container values-inner mono">
-          <span>FAMILY</span><span>DISCIPLINE</span><span>CURIOSITY</span><span>SERVICE</span><span>EXECUTION</span>
-        </div>
-      </div>
 
       <section id="bio">
         <div class="container">
@@ -484,6 +481,7 @@
           <div class="bio-panel">
             <article class="bio-copy">
               <h2>Husband. Father. Builder.</h2>
+              <p>Thirteen years at <strong>American Express</strong>, the last six on the AI side. I helped build the rubrics and calibration protocols behind our annotation program, and by 2025 I owned the <strong>annotation and quality lifecycle end to end</strong> for three production models: the U.S. Chatbot, the U.K. Chatbot, and Document AI.</p>
               <p>I believe a man should build things that matter, protect what he loves, keep learning, and use his skills to help others. That mindset drives the way I approach technology. I build <strong>AI tools, automation systems, and dashboards</strong> that bring order to chaos and help people move with more clarity and confidence.</p>
               <p>My work is practical by design. Crypto research tools, job search agents, creator analytics, automation workflows, and technical experiments all come from the same place: solve the problem, sharpen the system, and make the next move better.</p>
               <p>I love my wife, I love my kids, and I want the work I create to reflect discipline, service, and purpose.</p>
@@ -568,10 +566,9 @@
             <p class="section-copy">GitHub for proof, project links for context, support links for people who like the work, and a protected email button for direct contact.</p>
           </div>
           <div class="actions" style="margin-top:0;">
-            <a class="btn primary" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">github ↗</a>
+            <a class="btn primary" href="/resume.pdf" target="_blank" rel="noreferrer">résumé (pdf) ↓</a>
             <button class="btn" id="emailBtn" type="button">email me</button>
-            <a class="btn" href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer">ko-fi</a>
-            <a class="btn" href="https://buymeacoffee.com/ryancreates" target="_blank" rel="noreferrer">buy me a coffee</a>
+            <a class="btn" href="https://github.com/Gelas-Soldat" target="_blank" rel="noreferrer">github ↗</a>
           </div>
         </div>
       </section>
@@ -580,7 +577,12 @@
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> ryandesigns.dev — built with intent.</span>
-        <span>clarity · discipline · execution</span>
+        <span>
+          <a href="https://ko-fi.com/gelassoldat" target="_blank" rel="noreferrer" style="text-decoration:underline;text-underline-offset:3px;">ko-fi</a>
+          &nbsp;·&nbsp;
+          <a href="https://buymeacoffee.com/ryancreates" target="_blank" rel="noreferrer" style="text-decoration:underline;text-underline-offset:3px;">buy me a coffee</a>
+          &nbsp;·&nbsp; clarity · discipline · execution
+        </span>
       </div>
     </footer>
 
@@ -647,7 +649,8 @@
           stack: ["Python","Flask","SQLite","Job APIs","AI Review"],
           summary: "Local AI assisted command center for finding, filtering, scoring, saving, and exporting remote U.S. job opportunities.",
           impact: "Cuts job hunting noise by ranking roles against a real target profile and keeping the workflow organized.",
-          github: "https://github.com/Gelas-Soldat/remote_role_agent"
+          github: "https://github.com/Gelas-Soldat/remote_role_agent",
+          page: "/projects/remote-role-agent.html"
         },
         {
           id: "outlook-job-tracker",
@@ -671,7 +674,8 @@
           summary: "Mobile friendly TikTok analytics dashboard with CSV upload, paste import, creator scoring, content insights, and next video ideas.",
           impact: "Gives creators a private browser based way to understand what is working without needing a backend.",
           github: "https://github.com/Gelas-Soldat/toksignal-creator-analyzer",
-          demo: "https://toksignal.netlify.app/"
+          demo: "https://toksignal.netlify.app/",
+          page: "/projects/toksignal-creator-analyzer.html"
         },
         {
           id: "community-health-intelligence",
@@ -682,7 +686,9 @@
           stack: ["SQL","Data Analysis","Python","Portfolio","Public Health Data"],
           summary: "A SQL and BI project using CDC, Census, and USDA public datasets to identify high risk counties through analytics, KPI modeling, and interactive dashboard reporting.",
           impact: "Built to sharpen my technical foundation in SQL, data cleaning, analysis logic, and practical storytelling through data.",
-          github: "https://github.com/Gelas-Soldat/community-health-intelligence"
+          github: "https://github.com/Gelas-Soldat/community-health-intelligence",
+          demo: "https://uscounty.health",
+          page: "/projects/community-health-intelligence.html"
         },
         {
           id: "memorial-day-stats",
@@ -713,12 +719,12 @@
           name: "Gate Runner",
           repo: "gate-runner",
           category: "Game Dev",
-          status: "In development — prototype phase",
+          status: "Google Play closed testing",
           private: true,
           stack: ["Unity","C#","Mobile","Supabase","Game Design"],
           summary: "Hybrid-casual mobile runner with a low-poly military theme: your army auto-runs forward while you swipe between lanes and pick math gates (+10, x2, ÷2) to grow your force before the boss battle.",
           impact: "The whole pitch: the ads and store screenshots show exactly the gameplay you get. No bait and switch — the game IS the thing the ad promises.",
-          details: "# Gate Runner\n\nA hybrid-casual mobile game in active development — my first Unity project, built in deliberate phases.\n\n## The core loop\n\n- Your army auto-runs forward down a lane\n- Swipe left/right to move across 3–5 parallel lanes\n- Gates apply math operations to your troop count: **+10**, **x2**, **÷2**, weapon upgrades — pick your lane wisely\n- Enemy squads along the path get mowed down based on your army's size and power\n- Every level ends in a boss battle: your force vs. theirs\n\n## The angle\n\nThe top competitor in this space advertises exactly this mechanic — but ships a slow base-builder instead, and its reviews are full of complaints about the mismatch. Gate Runner's strategy is simple: **build the game the ads actually show.**\n\n## Stack & roadmap\n\n- **Engine:** Unity (C#), targeting Android and iOS\n- **Backend:** Supabase for save data and remote config\n- **Monetization (planned):** rewarded ads, capped interstitials, one-time IAPs, battle pass, VIP subscription — all tunable via remote config without app resubmission\n\nCurrently in the core-prototype phase: proving the lane-swipe / math-gate loop is fun with placeholder geometry before layering on meta progression, art, and monetization."
+          details: "# Gate Runner\n\nA hybrid-casual mobile game in active development — my first Unity project, built in deliberate phases.\n\n## The core loop\n\n- Your army auto-runs forward down a lane\n- Swipe left/right to move across 3–5 parallel lanes\n- Gates apply math operations to your troop count: **+10**, **x2**, **÷2**, weapon upgrades — pick your lane wisely\n- Enemy squads along the path get mowed down based on your army's size and power\n- Every level ends in a boss battle: your force vs. theirs\n\n## The angle\n\nThe top competitor in this space advertises exactly this mechanic — but ships a slow base-builder instead, and its reviews are full of complaints about the mismatch. Gate Runner's strategy is simple: **build the game the ads actually show.**\n\n## Stack & roadmap\n\n- **Engine:** Unity (C#), targeting Android and iOS\n- **Backend:** Supabase for save data and remote config\n- **Monetization (planned):** rewarded ads, capped interstitials, one-time IAPs, battle pass, VIP subscription — all tunable via remote config without app resubmission\n\nBuilt in Unity 6 and currently in **Google Play closed testing** — I own the design, economy balancing, build pipeline, and store listing."
         }
       ];
 
@@ -786,14 +792,16 @@
                 ${p.private
                   ?`<span>🔒 <strong>private build</strong></span><span><strong>${esc(p.stack[0])}</strong></span>`
                   :`<span>★ <strong>${esc(String(stars))}</strong></span><span><strong>${esc(lang)}</strong></span>${updated?`<span>updated <strong>${esc(updated)}</strong></span>`:""}`}
-                <span style="margin-left:auto;">read more →</span>
+                <span style="margin-left:auto;">${p.page?"case study →":"read more →"}</span>
               </div>
             </article>`;
         }).join("");
 
         grid.querySelectorAll(".project-card").forEach((card,i)=>{
-          card.addEventListener("click",()=>openDetail(card.dataset.id));
-          card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openDetail(card.dataset.id);}});
+          const proj=projects.find(p=>p.id===card.dataset.id);
+          const go=()=>{ if(proj&&proj.page){window.location.href=proj.page;}else{openDetail(card.dataset.id);} };
+          card.addEventListener("click",go);
+          card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});
           card.classList.add("reveal");
           card.style.setProperty("--reveal-delay",`${(i%2)*80}ms`);
           observeReveal(card);
@@ -946,6 +954,10 @@
         document.getElementById("emailStatus").textContent="";emailBtn.focus();
       };
       emailBtn.addEventListener("click",showEmailModal);
+      // Hero button: one click straight to the mail app, address still assembled at runtime
+      document.getElementById("heroEmailBtn").addEventListener("click",()=>{
+        window.location.href=`mailto:${buildEmail()}?subject=${encodeURIComponent("Ryan Designs inquiry")}`;
+      });
       document.getElementById("closeEmailModal").addEventListener("click",hideEmailModal);
       emailModal.addEventListener("click",e=>{if(e.target===emailModal)hideEmailModal();});
       document.getElementById("copyEmailBtn").addEventListener("click",async()=>{
@@ -987,12 +999,11 @@
 
       function initReveal(){
         const targets=document.querySelectorAll(
-          ".section-head, .spec-card, .bio-copy, .bio-quote, .bio-list, .stack-panel, .contact-panel, .project-tabs-wrap, .values-inner span"
+          ".section-head, .spec-card, .bio-copy, .bio-quote, .bio-list, .stack-panel, .contact-panel, .project-tabs-wrap"
         );
         targets.forEach((el,i)=>{
           el.classList.add("reveal");
           if(el.matches(".spec-card"))el.style.setProperty("--reveal-delay",`${(i%4)*70}ms`);
-          if(el.matches(".values-inner span"))el.style.setProperty("--reveal-delay",`${(i%6)*60}ms`);
           observeReveal(el);
         });
       }

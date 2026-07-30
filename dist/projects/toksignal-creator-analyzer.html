@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = t;
+        }catch(e){ document.documentElement.dataset.theme = "light"; }
+      })();
+    </script>
+    <script async src="https://plausible.io/js/pa-2cPxiazowfSd8Jx0SMuCF.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <meta name="description" content="Case study: a privacy-first TikTok creator analytics dashboard — CSV upload, in-browser scoring, content insights, and video ideas. No backend, no API, nothing leaves your machine." />
+    <title>TokSignal Creator Analyzer — Case Study | Ryan Designs</title>
+    <meta property="og:title" content="TokSignal Creator Analyzer — Case Study" />
+    <meta property="og:description" content="A creator analytics dashboard that chose CSV upload over the TikTok API — and the hard decisions behind it." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://ryandesigns.dev/projects/toksignal-creator-analyzer.html" />
+    <meta property="og:image" content="https://ryandesigns.dev/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="../index.html" aria-label="Ryan Designs home">ryandesigns<span class="tld">.dev</span></a>
+        <a class="back-link mono" href="../index.html#projects">← all projects</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article>
+        <header class="case-head">
+          <p class="label">case study / creator tools</p>
+          <h1>TokSignal Creator Analyzer</h1>
+          <p class="case-sub">A mobile-friendly TikTok analytics dashboard that turns a creator's own CSV export into profile scoring, content pillars, top-post analysis, and specific next-video ideas — entirely in the browser.</p>
+          <div class="meta-row mono">
+            <span class="pill">Static site</span><span class="pill">CSV</span><span class="pill">Charts</span><span class="pill">Privacy first</span><span class="pill live">● live</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://toksignal.netlify.app/" target="_blank" rel="noreferrer">try the live demo ↗</a>
+            <a class="btn" href="https://github.com/Gelas-Soldat/toksignal-creator-analyzer" target="_blank" rel="noreferrer">view repo ↗</a>
+          </div>
+        </header>
+
+        <section>
+          <h2>The problem</h2>
+          <p>Creators have their own performance data — TikTok hands it over as an export — but almost no way to read it. The tools that do exist want an account connection, a subscription, or your data on their server. I wanted to answer one question — <em>what's actually working on this account?</em> — with something anyone could use in ten seconds, on their phone, without trusting a stranger's backend.</p>
+          <p>TokSignal is a static page: upload (or paste) your TikTok CSV, and it computes a creator score, engagement patterns, content pillars, and concrete video ideas — all client-side. There is no server to trust because there is no server.</p>
+        </section>
+
+        <figure>
+          <img src="img/toksignal.png" alt="TokSignal landing screen with CSV upload area, privacy-by-default messaging, and profile snapshot metrics" loading="lazy" />
+          <figcaption class="mono">Upload, analyze, improve — all processing happens in the browser.</figcaption>
+        </figure>
+
+        <section>
+          <h2>One hard decision</h2>
+          <p>CSV upload instead of the TikTok API. The API route meant an app review, an approval wait, and a dependency I don't control on a project I built to answer one question. CSV meant anyone can use it in ten seconds with data they already have, and it stays entirely in the browser so nothing leaves their machine. It also means the tool is only as fresh as the export you feed it.</p>
+        </section>
+
+        <section>
+          <h2>What I'd do differently</h2>
+          <p>I set the scoring weights from what I assumed mattered, then validated them afterward against creators I already knew were performing well. I should have done that in the other order. Two of the weights were near-useless and I only found out by checking my own conclusions.</p>
+        </section>
+
+        <section>
+          <h2>Under the hood</h2>
+          <ul>
+            <li>Pure HTML/CSS/JavaScript static site — no build step, no backend, deployed on Netlify</li>
+            <li>CSV parsing and template support for TikTok's export format, plus paste-in import and a demo dataset</li>
+            <li>Creator scoring, engagement-rate analysis, content-pillar detection, and next-video suggestions computed client-side</li>
+            <li>Mobile-first layout with selectable themes, built to be used from the phone where creators actually live</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="case-cta">
+        <div>
+          <h2>AI quality &amp; human-data operations — open to work</h2>
+          <p>Scoring logic, validation order, and honest constraints — the same thinking I bring to annotation quality systems. Questions?</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="../resume.pdf" target="_blank" rel="noreferrer">résumé (pdf) ↓</a>
+          <button class="btn" id="ctaEmailBtn" type="button">email me</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> ryandesigns.dev — built with intent.</span>
+        <span><a href="../index.html">home</a> · <a href="../index.html#projects">projects</a></span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent=new Date().getFullYear();
+      const dec=c=>c.map(x=>String.fromCharCode(x)).join("");
+      document.getElementById("ctaEmailBtn").addEventListener("click",()=>{
+        window.location.href=`mailto:${dec([104,101,108,108,111])}@${dec([114,121,97,110,100,101,115,105,103,110,115,46,100,101,118])}?subject=${encodeURIComponent("Ryan Designs inquiry")}`;
+      });
+    </script>
+  </body>
+</html>
