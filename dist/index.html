@@ -954,10 +954,8 @@
         document.getElementById("emailStatus").textContent="";emailBtn.focus();
       };
       emailBtn.addEventListener("click",showEmailModal);
-      // Hero button: one click straight to the mail app, address still assembled at runtime
-      document.getElementById("heroEmailBtn").addEventListener("click",()=>{
-        window.location.href=`mailto:${buildEmail()}?subject=${encodeURIComponent("Ryan Designs inquiry")}`;
-      });
+      // Hero button: open the email modal — a bare mailto fails silently when no mail app is configured
+      document.getElementById("heroEmailBtn").addEventListener("click",showEmailModal);
       document.getElementById("closeEmailModal").addEventListener("click",hideEmailModal);
       emailModal.addEventListener("click",e=>{if(e.target===emailModal)hideEmailModal();});
       document.getElementById("copyEmailBtn").addEventListener("click",async()=>{

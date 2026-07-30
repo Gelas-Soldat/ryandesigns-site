@@ -108,8 +108,20 @@
     <script>
       document.getElementById("year").textContent=new Date().getFullYear();
       const dec=c=>c.map(x=>String.fromCharCode(x)).join("");
-      document.getElementById("ctaEmailBtn").addEventListener("click",()=>{
-        window.location.href=`mailto:${dec([104,101,108,108,111])}@${dec([114,121,97,110,100,101,115,105,103,110,115,46,100,101,118])}?subject=${encodeURIComponent("Ryan Designs inquiry")}`;
+      const addr=()=>`${dec([104,101,108,108,111])}@${dec([114,121,97,110,100,101,115,105,103,110,115,46,100,101,118])}`;
+      // Reveal + copy instead of bare mailto — mailto fails silently with no mail app configured
+      document.getElementById("ctaEmailBtn").addEventListener("click",async()=>{
+        const a=addr();
+        let reveal=document.getElementById("emailReveal");
+        if(!reveal){
+          reveal=document.createElement("div");
+          reveal.id="emailReveal";
+          reveal.className="email-reveal mono";
+          document.querySelector(".case-cta").appendChild(reveal);
+        }
+        let copied=false;
+        try{await navigator.clipboard.writeText(a);copied=true;}catch(e){}
+        reveal.innerHTML=`<strong>${a}</strong><em>${copied?"copied to clipboard":"copy it from here"} — or <a href="mailto:${a}?subject=Ryan%20Designs%20inquiry">open your mail app</a></em>`;
       });
     </script>
   </body>
